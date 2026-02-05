@@ -1,0 +1,53 @@
+/* ================= PDF VIEWER ================= */
+
+.pdf-viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  transition: transform 0.35s ease;
+  transform: translateX(0);
+  will-change: transform;
+
+  background:
+    radial-gradient(circle at top, #020617, #020617),
+    linear-gradient(135deg, #020617, #0f172a);
+
+  z-index: 1000;
+  flex-direction: column;
+}
+
+/* When PDF is open */
+body.pdf-mode .pdf-viewer {
+  display: flex;
+}
+
+/* Hide dashboard completely */
+body.pdf-mode #dashboardContent {
+  display: none;
+}
+
+/* Top bar */
+.pdf-topbar {
+  height: 52px;
+  padding: 12px 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: linear-gradient(145deg, #020617, #0f172a);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Iframe fills remaining space */
+#pdfFrame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #000;
+}
+/* When sidebar is open over PDF */
+body.pdf-mode.sidebar-open .pdf-viewer {
+  transform: translateX(260px);
+  width: calc(100% - 260px);
+}

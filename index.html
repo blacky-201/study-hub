@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Hub Dashboard</title>
+ <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/buttons.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="stylesheet" href="css/pdf.css">
+<link rel="stylesheet" href="css/ai.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  
+<div class="app">
+
+  <!-- Sidebar -->
+  
+ <aside class="sidebar">
+  <h2>Focus Friend</h2>
+  <p class="subtitle">Organize your materials</p>
+
+  <div class="nav-group">
+    <button class="add-btn" onclick="openModal()">＋ Add Subject</button>
+
+    <button class="nav-btn active" onclick="goToDashboard()">
+  📊 Dashboard
+</button>
+
+  </div>
+     <div class="sidebar-divider"></div>
+  <div class="nav-group">
+    <button class="ai-btn" onclick="toggleAI()">✨ Your AI</button>
+    <button class="theme-btn" onclick="toggleTheme()">🌗 Theme</button>
+  </div>
+</aside>
+
+
+
+ <!-- Main Content -->
+<main class="main">
+ 
+  <!-- DASHBOARD CONTENT -->
+  <div id="dashboardContent">
+
+    <h1>Dashboard</h1>
+    <p class="subtitle">Track your learning progress</p>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="card fade">
+        <span>Total Subjects</span>
+        <h2 id="subjects">0</h2>
+      </div>
+      <div class="card fade">
+        <span>Total Chapters</span>
+        <h2 id="chapters">0</h2>
+      </div>
+      <div class="card fade">
+        <span>Completed</span>
+        <h2 id="completed">0</h2>
+      </div>
+      <div class="card fade">
+        <span>Completion Rate</span>
+        <h2 id="rate">0%</h2>
+      </div>
+    </div>
+
+    <!-- Overall Progress -->
+    <div class="panel slide">
+      <h3>Overall Progress</h3>
+      <p id="progress-text"></p>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+    </div>
+
+    <!-- Subject Progress -->
+    <div class="panel slide" id="subjectPanel">
+      <h3>Subject Progress</h3>
+      <p class="empty">
+        No subjects yet. Add your first subject to get started!
+      </p>
+    </div>
+
+  </div>
+
+  <!-- PDF VIEWER (SEPARATE) -->
+  <div class="pdf-viewer" id="pdfViewer">
+    <div class="pdf-topbar">
+      <span id="pdfBreadcrumb"></span>
+      <button class="neutral" onclick="closePDF()">✖ Close</button>
+    </div>
+    <iframe id="pdfFrame"></iframe>
+  </div>
+
+</main>
+
+<!-- Add Subject Modal -->
+<div class="modal" id="subjectModal">
+  <div class="modal-content">
+    <h3>Add New Subject</h3>
+
+    <input type="text" id="subjectName" placeholder="Subject name" />
+    <input type="number" id="subjectChapters" placeholder="Total chapters" />
+
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeModal()">Cancel</button>
+      <button class="save" onclick="addSubject()">Add Subject</button>
+    </div>
+  </div>
+</div>
+<!-- AI Assistant Panel -->
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-panel-header">
+    ✨ FOCUS AI
+    <button class="ai-close" onclick="toggleAI()">✖</button>
+  </div>
+
+  <div class="ai-panel-body">
+    <div class="ai-message ai-bot">
+      Hello! I’m your AI assistant. Ask me anything 📚
+    </div>
+  </div>
+
+  <div class="ai-panel-input-wrap">
+    <input
+      type="text"
+      class="ai-panel-input"
+      placeholder="Ask a question..."
+    />
+    <button class="ai-send-btn">
+      ➤
+    </button>
+  </div>
+</div>
+
+  <button id="pdfMenuBtn" class="pdf-menu-btn" onclick="toggleSidebar()">
+  ☰
+</button>
+
+<script src="./app.js"></script>
+</body>
+</html>

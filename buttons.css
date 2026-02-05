@@ -1,0 +1,172 @@
+
+/* =====================================================
+   ❄️ WINTER 3D BUTTON SYSTEM (MAIN CONTENT ONLY)
+   Scoped to .main to avoid sidebar conflicts
+   ===================================================== */
+
+/* ---------- BASE BUTTON ---------- */
+.main button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 22px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  color: #020617;
+
+  /* Frosted glass surface */
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.95),
+    rgba(255,255,255,0.75)
+  );
+
+  backdrop-filter: blur(8px);
+
+  /* 3D depth */
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.55),
+    inset 0 1px 1px rgba(255,255,255,0.9),
+    inset 0 -2px 3px rgba(0,0,0,0.15);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+
+  overflow: hidden;
+}
+
+/* ---------- SHINE LAYER ---------- */
+.main button::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 60%;
+  height: 220%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- HOVER (LIFT + SHINE) ---------- */
+.main button:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.05);
+
+  box-shadow:
+    0 22px 44px rgba(0,0,0,0.75),
+    inset 0 1px 1px rgba(255,255,255,0.95);
+}
+
+.main button:hover::after {
+  opacity: 1;
+  animation: winterShine 0.9s ease;
+}
+
+@keyframes winterShine {
+  from { left: -40%; }
+  to   { left: 120%; }
+}
+
+/* ---------- ACTIVE (PRESS) ---------- */
+.main button:active {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.6),
+    inset 0 2px 4px rgba(0,0,0,0.25);
+}
+
+/* =====================================================
+   ❄️ VARIANTS
+   ===================================================== */
+
+/* PRIMARY (Add / Open / Important) */
+.main button.primary,
+.main button.save,
+.main .open-pdf {
+  color: #ecfeff;
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #22d3ee
+  );
+
+  box-shadow:
+    0 16px 36px rgba(99,102,241,0.75),
+    inset 0 1px 1px rgba(255,255,255,0.4);
+}
+
+/* SUCCESS */
+.main button.success {
+  color: #022c22;
+  background: linear-gradient(
+    135deg,
+    #22c55e,
+    #4ade80
+  );
+}
+
+/* NEUTRAL (Cancel / Close) */
+.main button.cancel,
+.main button.neutral {
+  color: #e5e7eb;
+  background: linear-gradient(
+    145deg,
+    #1f2937,
+    #020617
+  );
+
+  box-shadow:
+    0 14px 30px rgba(0,0,0,0.8),
+    inset 0 1px 1px rgba(255,255,255,0.15);
+}
+
+/* DANGER */
+.main button.danger,
+.main .del-chapter {
+  color: #fee2e2;
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #f87171
+  );
+
+  box-shadow:
+    0 16px 36px rgba(239,68,68,0.7);
+}
+
+/* SMALL ICON BUTTONS */
+.main button.icon,
+.main .del-chapter {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+/* DISABLED STATE */
+.main button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+

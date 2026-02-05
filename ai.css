@@ -1,0 +1,126 @@
+/* ================= AI PANEL ================= */
+
+.ai-panel {
+  width: 360px;
+  position: fixed;
+  right: -360px;
+  top: 0;
+  height: 100vh;
+  transition: transform 0.35s ease;
+  will-change: transform;
+
+  background: linear-gradient(
+    145deg,
+    rgba(24, 15, 15, 0.612),
+    rgba(0, 0, 0, 0.627)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: solid;
+
+  box-shadow: -30px 0 60px rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  z-index: 3000;
+
+  transition: right 0.45s cubic-bezier(.4,0,.2,1);
+}
+
+.ai-panel.open {
+  right: 0;
+}
+
+/* Header */
+.ai-panel-header {
+  height: 56px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  background: linear-gradient(135deg, #0b1d25, #0ea5e9);
+  box-shadow:
+    inset 0 -1px 1px rgba(255,255,255,0.4);
+}
+
+.ai-close {
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* Body */
+.ai-panel-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* AI Message Bubble */
+.ai-message {
+  max-width: 90%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.ai-bot {
+  background: linear-gradient(
+    145deg,
+    rgba(11, 17, 22, 0.18),
+    rgba(59, 16, 16, 0.08)
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.3);
+}
+
+/* ================= INPUT AREA ================= */
+
+.ai-panel-input-wrap {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.ai-panel-input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+
+  background: rgba(0,0,0,0.35);
+  color: white;
+  font-size: 14px;
+}
+
+/* SEND ARROW BUTTON */
+.ai-send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 18px;
+  color: white;
+
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+
+  box-shadow:
+    0 10px 24px rgba(99,102,241,0.8),
+    inset 0 1px 1px rgba(255,255,255,0.4);
+
+  transition: transform 0.2s ease;
+}
+
+.ai-send-btn:hover {
+  transform: translateY(-2px);
+}
